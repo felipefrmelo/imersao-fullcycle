@@ -29,7 +29,7 @@ func TestNewPixKey(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			_, err := NewPixKey(tt.args.kind, tt.args.account, tt.args.key)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("NewPixKey() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("NewPixKey() error =s %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 
@@ -53,7 +53,7 @@ func TestModel_NewPixKey(t *testing.T) {
 	require.NotEmpty(t, uuid.FromStringOrNil(pixKey.ID))
 	require.Equal(t, pixKey.Kind, kind)
 	require.Equal(t, pixKey.Status, "active")
-
+	require.NotEmpty(t, pixKey.AccountID)
 	kind = "cpf"
 	_, err = NewPixKey(kind, account, key)
 	require.Nil(t, err)
